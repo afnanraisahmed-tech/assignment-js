@@ -1,149 +1,156 @@
-// Q1: Print numbers from 1 to 10
+// ============================================
+// LOOPS - 10 Solutions
+// ============================================
 
-for (let i = 1; i <= 10; i++) {
-    console.log(i);
+// Q1: Print numbers 1 to 10 using for loop
+function lq1() {
+  let result = "";
+  for (let i = 1; i <= 10; i++) {
+    result += i + " ";
+  }
+  console.log("Q1: " + result);
 }
 
-
-
-// Q2: Calculate the sum of the first N natural numbers
-
-let n = 5;
-let i = 1;
-let sum = 0;
-
-while (i <= n) {
-    sum = sum + i;
+// Q2: Sum of first N natural numbers using while loop
+function lq2() {
+  let n = 10;
+  let sum = 0;
+  let i = 1;
+  while (i <= n) {
+    sum += i;
     i++;
+  }
+  console.log("Q2: Sum of first " + n + " numbers = " + sum);
 }
 
-console.log("Sum:", sum);
-
-
-
-// Q3: Print the multiplication table of a given number
-
-let number = 5;
-
-for (let i = 1; i <= 10; i++) {
-    console.log(number + " x " + i + " = " + (number * i));
+// Q3: Multiplication table using for loop
+function lq3() {
+  let num = 5;
+  console.log("Q3: Multiplication table of " + num + ":");
+  for (let i = 1; i <= 5; i++) { // 5 tak print kiya hai taake console lamba na ho
+    console.log("    " + num + " x " + i + " = " + (num * i));
+  }
 }
 
+// Q4: Factorial using while loop
+function lq4() {
+  let n = 5;
+  let fact = 1;
+  let i = n;
+  while (i >= 1) {
+    fact *= i;
+    i--;
+  }
+  console.log("Q4: Factorial of " + n + " = " + fact);
+}
 
+// Q5: Reverse counting 10 down to 1 using for loop
+function lq5() {
+  let result = "";
+  for (let i = 10; i >= 1; i--) {
+    result += i + " ";
+  }
+  console.log("Q5: " + result);
+}
 
-// Q4: Calculate factorial using a while loop
-
-let number = 5;
-let i = 1;
-let factorial = 1;
-
-if (!Number.isInteger(number) || number < 0) {
-    console.log("Enter a non-negative integer");
-} else {
-    while (i <= number) {
-        factorial = factorial * i;
-        i++;
+// Q6: Even numbers up to N using do-while loop
+function lq6() {
+  let n = 10;
+  let i = 1;
+  let result = "";
+  do {
+    if (i % 2 === 0) {
+      result += i + " ";
     }
-
-    console.log("Factorial:", factorial);
+    i++;
+  } while (i <= n);
+  console.log("Q6: Even numbers up to " + n + ": " + result);
 }
 
-
-
-// Q5: Print numbers from 10 down to 1
-
-for (let i = 10; i >= 1; i--) {
-    console.log(i);
+// Q7: Sum of digits using while loop
+function lq7() {
+  let num = 12345;
+  let temp = num;
+  let sum = 0;
+  while (temp > 0) {
+    sum += temp % 10;
+    temp = Math.floor(temp / 10);
+  }
+  console.log("Q7: Sum of digits of " + num + " = " + sum);
 }
 
-
-
-// Q6: Print even numbers up to N using do-while
-
-let n = 10;
-let i = 2;
-
-if (n >= 2) {
-    do {
-        console.log(i);
-        i += 2;
-    } while (i <= n);
-} else {
-    console.log("No even numbers from 2 to N");
+// Q8: Fibonacci series (first 10 terms) using for loop
+function lq8() {
+  let a = 0;
+  let b = 1;
+  let result = "";
+  for (let i = 0; i < 10; i++) {
+    result += a + " ";
+    let next = a + b;
+    a = b;
+    b = next;
+  }
+  console.log("Q8: Fibonacci Series (10 terms): " + result);
 }
 
+// Q9: Guessing game using do-while loop (Simulated)
+function lq9() {
+  let correctNumber = 7; // Target
+  let guesses = [3, 5, 7]; // Demo guesses
+  let index = 0;
+  let userGuess;
+  let attempts = 0;
 
-
-// Q7: Calculate the sum of digits using a while loop
-
-let number = 1234;
-let sum = 0;
-
-number = Math.abs(number);
-
-while (number > 0) {
-    let digit = number % 10;
-    sum = sum + digit;
-    number = Math.floor(number / 10);
-}
-
-console.log("Sum of digits:", sum);
-
-
-
-// Q8: Generate the first 10 terms of the Fibonacci series
-
-let first = 0;
-let second = 1;
-
-for (let i = 1; i <= 10; i++) {
-    console.log(first);
-
-    let next = first + second;
-    first = second;
-    second = next;
-}
-
-
-
-// Q9: Keep asking for a guess until the correct number is found
-
-const secretNumber = 7;
-const guesses = [3, 5, 7];
-let index = 0;
-let guess;
-
-do {
-    guess = guesses[index];
-    console.log("Your guess:", guess);
-
-    if (guess !== secretNumber) {
-        console.log("Wrong guess, try again");
+  do {
+    userGuess = guesses[index];
+    attempts++;
+    console.log("    Attempt " + attempts + ": Guessed " + userGuess);
+    
+    if (userGuess < correctNumber) {
+      console.log("    Too low!");
+    } else if (userGuess > correctNumber) {
+      console.log("    Too high!");
     }
-
     index++;
-} while (guess !== secretNumber && index < guesses.length);
-
-if (guess === secretNumber) {
-    console.log("Correct guess!");
+  } while (userGuess !== correctNumber);
+  
+  console.log("Q9: Correct! You guessed the number in " + attempts + " attempts.");
 }
 
-
-
-// Q10: Check whether a number is prime using a for loop
-
-let number = 17;
-let isPrime = number > 1;
-
-for (let i = 2; i <= Math.sqrt(number); i++) {
-    if (number % i === 0) {
+// Q10: Prime number check using for loop
+function lq10() {
+  let n = 29;
+  let isPrime = true;
+  
+  if (n <= 1) {
+    isPrime = false;
+  } else {
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+      if (n % i === 0) {
         isPrime = false;
         break;
+      }
     }
+  }
+  
+  if (isPrime) {
+    console.log("Q10: " + n + " is a Prime number");
+  } else {
+    console.log("Q10: " + n + " is NOT a Prime number");
+  }
 }
 
-if (isPrime) {
-    console.log(number + " is a prime number");
-} else {
-    console.log(number + " is not a prime number");
-}
+// --- Calling all functions ---
+console.log("====================================");
+console.log("          LOOPS RESULTS             ");
+console.log("====================================");
+lq1();
+lq2();
+lq3();
+lq4();
+lq5();
+lq6();
+lq7();
+lq8();
+lq9();
+lq10();
